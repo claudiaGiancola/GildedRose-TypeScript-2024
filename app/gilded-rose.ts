@@ -50,9 +50,10 @@ export class GildedRose {
           break;
 
         case (item.name === 'Aged Brie'):
-          if (item.quality < 50) {
-            item.quality++;
-          }  
+          item.quality < 50 ? item.quality++ : item.quality;
+
+          item.quality = Math.min(item.quality, 50);
+          
           item.sellIn--;
           break;
 
