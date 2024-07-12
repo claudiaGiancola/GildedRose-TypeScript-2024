@@ -18,65 +18,63 @@ export class GildedRose {
   }
 
   //increase quality(byN) > only increases/decreases if it's >=0 and <=50
-  //decrease sellIn
+  // increaseQuality(item: Item) {
+  //   item.quality 
+  // }
+
+  // decreaseQuality(item: Item) {
+    
+  // }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
+    this.items.forEach(item => {
 
       switch(true) {
 
-        case (this.items[i].name === 'Sulfuras, Hand of Ragnaros'):
+        case (item.name === 'Sulfuras, Hand of Ragnaros'):
           break;
 
-        case (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert'):
-          if (this.items[i].quality < 50) {
-            switch (true) {
-              case (this.items[i].sellIn <= 0):
-                this.items[i].quality = 0
-                break;
-              case (this.items[i].sellIn > 0):
-                this.items[i].quality++;
-                if (this.items[i].sellIn <= 5 && this.items[i].quality < 50) {
-                  this.items[i].quality++;
-                }
-                if (this.items[i].sellIn <= 10 && this.items[i].quality < 50) {
-                  this.items[i].quality++;
-                }
-                break;
-            }
+        case (item.name === 'Backstage passes to a TAFKAL80ETC concert'):
+          if (item.quality < 50) {
+            
+                  item.sellIn <= 5 ? item.quality ++ : item.quality;
+                  item.sellIn <= 10 ? item.quality += 2 : item.quality;
+                  item.sellIn > 10 ? item.quality++ : item.quality;
+                  
+                  item.quality = Math.min(item.quality, 50);
+
+                  item.sellIn <= 0 ? item.quality = 0 : item.quality;
+                
           }
-          this.items[i].sellIn--;
+          item.sellIn--;
           break;
 
-        case (this.items[i].name === 'Aged Brie'):
-          if (this.items[i].quality < 50) {
-            this.items[i].quality++;
+        case (item.name === 'Aged Brie'):
+          if (item.quality < 50) {
+            item.quality++;
           }  
-          this.items[i].sellIn--;
+          item.sellIn--;
           break;
 
-        case (this.items[i].name.includes('Conjured')):
-          if (this.items[i].quality > 0) {
-            this.items[i].quality -= 2;
-            if (this.items[i].sellIn <= 0) {
-              this.items[i].quality -= 2;
-            }
-          }
-          this.items[i].sellIn--;
+        case (item.name.includes('Conjured')):
+          item.quality > 0 ? item.quality -= 2 : item.quality;
+          item.sellIn <= 0 ? item.quality -= 2 : item.quality;
+
+          item.quality = Math.max(item.quality, 0);
+          
+          item.sellIn--;
           break;
       
         default:
-          if (this.items[i].quality > 0) {
-            this.items[i].quality--;
-            if (this.items[i].sellIn <= 0) {
-              this.items[i].quality--;
-            }
-          }
-          this.items[i].sellIn--;
+          item.quality > 0 ? item.quality-- : item.quality;
+          item.sellIn <= 0 ? item.quality-- : item.quality;
+              
+          item.quality = Math.max(item.quality, 0);
+          
+          item.sellIn--;
           break;
       }
-    
-    }
+    });
 
     return this.items;
   }
