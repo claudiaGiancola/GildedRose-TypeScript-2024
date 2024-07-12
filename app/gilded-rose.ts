@@ -17,15 +17,6 @@ export class GildedRose {
     this.items = items;
   }
 
-  //increase quality(byN) > only increases/decreases if it's >=0 and <=50
-  // increaseQuality(item: Item) {
-  //   item.quality 
-  // }
-
-  // decreaseQuality(item: Item) {
-
-  // }
-
   updateQuality() {
     this.items.forEach(item => {
 
