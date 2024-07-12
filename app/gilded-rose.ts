@@ -23,29 +23,27 @@ export class GildedRose {
   // }
 
   // decreaseQuality(item: Item) {
-    
+
   // }
 
   updateQuality() {
     this.items.forEach(item => {
 
-      switch(true) {
+      switch (true) {
 
         case (item.name === 'Sulfuras, Hand of Ragnaros'):
           break;
 
         case (item.name === 'Backstage passes to a TAFKAL80ETC concert'):
-          if (item.quality < 50) {
-            
-                  item.sellIn <= 5 ? item.quality ++ : item.quality;
-                  item.sellIn <= 10 ? item.quality += 2 : item.quality;
-                  item.sellIn > 10 ? item.quality++ : item.quality;
-                  
-                  item.quality = Math.min(item.quality, 50);
 
-                  item.sellIn <= 0 ? item.quality = 0 : item.quality;
-                
-          }
+          item.sellIn <= 5 ? item.quality++ : item.quality;
+          item.sellIn <= 10 ? item.quality += 2 : item.quality;
+          item.sellIn > 10 ? item.quality++ : item.quality;
+
+          item.quality = Math.min(item.quality, 50);
+
+          item.sellIn <= 0 ? item.quality = 0 : item.quality;
+
           item.sellIn--;
           break;
 
@@ -53,7 +51,7 @@ export class GildedRose {
           item.quality < 50 ? item.quality++ : item.quality;
 
           item.quality = Math.min(item.quality, 50);
-          
+
           item.sellIn--;
           break;
 
@@ -62,16 +60,16 @@ export class GildedRose {
           item.sellIn <= 0 ? item.quality -= 2 : item.quality;
 
           item.quality = Math.max(item.quality, 0);
-          
+
           item.sellIn--;
           break;
-      
+
         default:
           item.quality > 0 ? item.quality-- : item.quality;
           item.sellIn <= 0 ? item.quality-- : item.quality;
-              
+
           item.quality = Math.max(item.quality, 0);
-          
+
           item.sellIn--;
           break;
       }

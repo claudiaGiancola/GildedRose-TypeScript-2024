@@ -117,14 +117,13 @@ describe('Backstage passes', () => {
     expect(items[0].quality).to.equal(50);
   });
 
-  //TO BE IMPLEMENTED IN REFACTORING > throw error if quality is >50
   it('Backstage cannot increase after 50', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 4, 51)]);
     const items = gildedRose.updateQuality();
 
     expect(items[0].name).to.equal('Backstage passes to a TAFKAL80ETC concert');
     expect(items[0].sellIn).to.equal(3);
-    expect(items[0].quality).to.equal(51); //<= 50
+    expect(items[0].quality).to.equal(50); //<= 50
   });
 });
 
