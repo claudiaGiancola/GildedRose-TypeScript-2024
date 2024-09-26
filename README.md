@@ -2,6 +2,12 @@
 
 This is the Gilded Rose kata in TypeScript.
 
+Goals:
+- Writing tests
+- Refactoring
+- Typescript
+- Handling legacy code
+
 ## Getting started
 
 Install dependencies
@@ -55,3 +61,17 @@ There are instructions in the [TextTest Readme](../texttests/README.md) for sett
     interpreter:python
 
 
+### Development
+
+Focusing on refactoring the “Gilded Rose” code allowed me and my peer to explore in depth some aspects of the JavaScript/TypeScript syntax and to find a less know way to use both the “switch” statement and the “for loop” with multiple variables at the same time. These findings enhanced our code and improved its readability. 
+
+General pattern:
+- Read through the code a bit
+- Find a section of the code that you understand
+- Write a Unit Test to capture its behaviour
+- Commit your code
+- (optional) Refactor the code so it works the same way, but is cleaner.
+- Commit your code
+- Repeat
+
+After refactoring, we added a new feature to make so that the "Conjured Mana Cake" degrades twice as fast as a normal item.
